@@ -26,7 +26,7 @@ export const createActivity = async (req: any, res: Response) => {
 // ====================GET NEARBY ACTIVITIES====================
 export const getNearbyActivities = async (req: Request, res: Response) => {
   try {
-    const { lng, lat, radius = 5 } = req.query; // radius in km
+    const { lng, lat, radius = 5 } = req.query;
 
     const activities = await Activity.find({
       location: {
