@@ -45,8 +45,7 @@ export const getNearbyActivities = async (req: Request, res: Response) => {
 //==================== JOIN ACTIVITY====================
 export const joinActivity = async (req: any, res: Response) => {
   try {
-    const { id } = req.params; // activity ID
-
+    const { id } = req.params; 
     const activity = await Activity.findById(id);
     if (!activity) return res.status(404).json({ message: "Activity not found" });
 
