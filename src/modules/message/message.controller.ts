@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { Message } from "./message.model";
 
-//=======================  SEND MESSAGE======================= 
+//=======================  SEND MESSAGE ======================= 
 export const sendMessage = async (req: any, res: Response) => {
   try {
     const { receiver, activity, message } = req.body;
@@ -19,7 +19,7 @@ export const sendMessage = async (req: any, res: Response) => {
   }
 };
 
-//=======================  GET MESSAGES FOR ACTIVITY BETWEEN USERS======================= 
+//=======================  GET MESSAGES FOR ACTIVITY BETWEEN USERS ======================= 
 export const getMessages = async (req: any, res: Response) => {
   try {
     const { activityId, userId } = req.query;
@@ -32,7 +32,7 @@ export const getMessages = async (req: any, res: Response) => {
       ],
     })
       .sort({ createdAt: 1 })
-      .populate("sender receiver", "name photo");
+      .populate("sender receiver");
 
     return res.json(messages);
   } catch (error) {

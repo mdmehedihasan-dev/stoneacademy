@@ -5,7 +5,7 @@ export interface IActivity extends Document {
   description: string;
   location: {
     type: string;
-    coordinates: [number, number]; // [longitude, latitude]
+    coordinates: [number, number]; 
   };
   date: Date;
   maxParticipants: number;
@@ -21,7 +21,7 @@ const activitySchema = new Schema<IActivity>(
 
     location: {
       type: { type: String, enum: ["Point"], default: "Point" },
-      coordinates: { type: [Number], required: true }, // [lng, lat]
+      coordinates: { type: [Number], required: true }, 
     },
 
     date: { type: Date, required: true },
@@ -33,7 +33,7 @@ const activitySchema = new Schema<IActivity>(
   { timestamps: true }
 );
 
-//========== Create 2dsphere index for geo queries==========
+//========== Create 2dsphere index for geo queries =============
 activitySchema.index({ location: "2dsphere" });
 
 export const Activity = mongoose.model<IActivity>("Activity", activitySchema);
